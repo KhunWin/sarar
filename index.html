@@ -1,751 +1,573 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIN Khun Myint | Custom Document Automation for Myanmar Businesses</title>
+<link rel="icon" type="image/x-icon" href="/images/portfolio_icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2CMR75QQCP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2CMR75QQCP');
+</script>
+<style>
+:root{
+  --bg:#0a0e1a; --bg2:#0f1526; --card:rgba(255,255,255,.04);
+  --border:rgba(255,255,255,.09);
+  --gold:#e8b64c; --gold2:#f7d98a; --teal:#3fd0c9;
+  --text:#eef2f9; --muted:#9aa6bd;
+  --grad:linear-gradient(135deg,#e8b64c,#3fd0c9);
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI',system-ui,-apple-system,'Myanmar Text','Padauk',sans-serif;
+  background:var(--bg); color:var(--text); overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:''; position:fixed; inset:0; z-index:-1;
+  background:
+    radial-gradient(900px 600px at 85% -10%, rgba(232,182,76,.12), transparent 60%),
+    radial-gradient(800px 600px at -10% 110%, rgba(63,208,201,.10), transparent 60%),
+    var(--bg);
+}
+.container{max-width:1180px;margin:0 auto;padding:0 28px}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--gold);color:#0a0e1a}
 
-    <title>Khun Myint Win| Problem Solver & Software Developer</title>
-    <link rel="icon" type="image/x-icon" href="/images/portfolio_icon.png">
+/* ---------- HEADER ---------- */
+header{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  backdrop-filter:blur(14px);
+  background:rgba(10,14,26,.72);
+  border-bottom:1px solid var(--border);
+}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-weight:800;font-size:1.25rem;letter-spacing:.5px}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-link{
+  padding:8px 16px;border-radius:10px;font-size:.92rem;color:var(--muted);
+  cursor:pointer;transition:.25s;font-weight:500;
+}
+.nav-link:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.nav-link.active{color:#0a0e1a;background:var(--grad);font-weight:700}
+.lang-switch{
+  margin-left:10px;display:flex;border:1px solid var(--border);border-radius:10px;
+  overflow:hidden;font-size:.82rem;font-weight:600;
+}
+.lang-switch button{
+  padding:7px 12px;background:transparent;border:none;color:var(--muted);
+  cursor:pointer;font-family:inherit;transition:.2s;
+}
+.lang-switch button.active{background:var(--gold);color:#0a0e1a}
+.mobile-menu{display:none;font-size:1.4rem;cursor:pointer;color:var(--text)}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Tag Manager -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CMR75QQCP"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-2CMR75QQCP');
-    </script>
-    <!-- End Google Tag Manager -->
-    <link rel="stylesheet" href="style.css">
+/* ---------- PANELS ---------- */
+.panel{display:none;animation:panelIn .55s cubic-bezier(.2,.8,.2,1)}
+.panel.active{display:block}
+@keyframes panelIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* Desktop: each panel fits viewport (minus header) */
+@media(min-width:861px){
+  .panel{
+    height:100vh;padding-top:68px;
+    display:none;align-items:center;
+    overflow:hidden;
+  }
+  .panel.active{display:flex}
+  .panel .container{width:100%}
+}
+
+/* ---------- HERO ---------- */
+.hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 15px;border-radius:99px;font-size:.8rem;font-weight:600;
+  border:1px solid var(--border);background:var(--card);color:var(--gold2);
+  margin-bottom:22px;letter-spacing:.3px;
+}
+.hero-tag i{font-size:.7rem}
+h1.hero-title{
+  font-size:clamp(2rem,3.6vw,3.35rem);line-height:1.12;font-weight:800;
+  letter-spacing:-.5px;margin-bottom:20px;
+}
+h1.hero-title em{
+  font-style:normal;background:var(--grad);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-sub{color:var(--muted);font-size:1.03rem;line-height:1.65;max-width:540px;margin-bottom:30px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:12px;
+  font-weight:700;font-size:.94rem;cursor:pointer;border:none;font-family:inherit;
+  transition:.25s;letter-spacing:.2px;
+}
+.btn-primary{background:var(--grad);color:#0a0e1a;box-shadow:0 8px 30px rgba(232,182,76,.25)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(232,182,76,.38)}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+
+.hero-visual{position:relative}
+.visual-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:26px;backdrop-filter:blur(10px);
+}
+.visual-row{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--border)}
+.visual-row:last-child{border-bottom:none}
+.visual-ic{
+  width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
+  background:rgba(232,182,76,.12);color:var(--gold);font-size:1rem;flex-shrink:0;
+}
+.visual-txt{flex:1}
+.visual-txt b{display:block;font-size:.9rem;font-weight:700}
+.visual-txt small{color:var(--muted);font-size:.78rem}
+.visual-badge{
+  font-size:.72rem;font-weight:700;color:var(--teal);background:rgba(63,208,201,.12);
+  padding:4px 10px;border-radius:99px;
+}
+
+/* ---------- SERVICES ---------- */
+.section-head{text-align:center;margin-bottom:38px}
+.section-head h2{font-size:clamp(1.6rem,2.6vw,2.3rem);font-weight:800;letter-spacing:-.3px}
+.section-head p{color:var(--muted);margin-top:10px;font-size:.98rem;max-width:640px;margin-inline:auto}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:26px 22px;transition:.3s;position:relative;overflow:hidden;
+}
+.service-card::after{
+  content:'';position:absolute;inset:0;border-radius:var(--radius);
+  background:var(--grad);opacity:0;transition:.3s;z-index:-1;
+}
+.service-card:hover{transform:translateY(-6px);border-color:rgba(232,182,76,.4)}
+.service-card:hover{box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.service-ic{
+  width:50px;height:50px;border-radius:13px;display:grid;place-items:center;
+  background:rgba(232,182,76,.12);color:var(--gold);font-size:1.3rem;margin-bottom:16px;
+}
+.service-card h3{font-size:1.02rem;font-weight:700;margin-bottom:8px}
+.service-card p{color:var(--muted);font-size:.85rem;line-height:1.55}
+.service-card.free{border:1px solid rgba(63,208,201,.4);background:rgba(63,208,201,.05)}
+.service-card.free .service-ic{background:rgba(63,208,201,.15);color:var(--teal)}
+.service-card.free h3{color:var(--teal)}
+
+/* ---------- PROJECTS ---------- */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.proj-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px;transition:.3s;display:flex;gap:16px;
+}
+.proj-card:hover{transform:translateY(-5px);border-color:rgba(232,182,76,.4)}
+.proj-ic{
+  width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(232,182,76,.12);color:var(--gold);font-size:1.15rem;flex-shrink:0;
+}
+.proj-body h3{font-size:.98rem;font-weight:700;margin-bottom:6px}
+.proj-body .proj-meta{font-size:.76rem;color:var(--teal);font-weight:600;margin-bottom:8px;letter-spacing:.2px}
+.proj-body p{color:var(--muted);font-size:.83rem;line-height:1.55;margin-bottom:10px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px}
+.proj-tags span{
+  font-size:.7rem;padding:3px 9px;border-radius:99px;
+  background:rgba(255,255,255,.05);color:var(--muted);border:1px solid var(--border);
+}
+.proj-stat{
+  display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;
+  color:var(--gold2);margin-top:10px;
+}
+
+/* ---------- CONTACT ---------- */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.contact-copy h2{font-size:clamp(1.6rem,2.6vw,2.3rem);font-weight:800;margin-bottom:14px;letter-spacing:-.3px}
+.contact-copy p{color:var(--muted);font-size:.97rem;line-height:1.65;margin-bottom:24px}
+/* Single-column contact */
+.contact-solo{
+  max-width:560px;
+  margin:0 auto;
+  text-align:center;
+}
+.contact-solo .contact-copy p{margin-inline:auto}
+.contact-solo .contact-methods{margin-top:26px}
+.contact-solo .cmethod{text-align:left}
+.contact-methods{display:flex;flex-direction:column;gap:12px}
+.cmethod{
+  display:flex;align-items:center;gap:14px;padding:15px 18px;
+  background:var(--card);border:1px solid var(--border);border-radius:14px;transition:.25s;
+}
+.cmethod:hover{border-color:var(--gold);transform:translateX(5px)}
+.cmethod-ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:1.15rem}
+.cmethod-ic.viber{background:rgba(115,96,242,.15);color:#9b8cff}
+.cmethod-ic.mail{background:rgba(232,182,76,.12);color:var(--gold)}
+.cmethod small{display:block;color:var(--muted);font-size:.74rem}
+.cmethod b{font-size:.92rem;font-weight:700}
+
+.form-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:28px;backdrop-filter:blur(10px);
+}
+.form-card h3{font-size:1.1rem;font-weight:700;margin-bottom:6px}
+.form-card .form-sub{color:var(--muted);font-size:.82rem;margin-bottom:20px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:6px}
+.field input,.field textarea{
+  width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--border);
+  background:rgba(255,255,255,.03);color:var(--text);font-family:inherit;font-size:.88rem;
+  transition:.2s;resize:vertical;
+}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,.05)}
+.form-card .btn{width:100%;justify-content:center;margin-top:6px}
+
+/* ---------- FOOTER (mobile) ---------- */
+footer{padding:28px 0;text-align:center;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:860px){
+  nav{height:62px}
+  .nav-links{
+    position:fixed;top:62px;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:4px;padding:14px 20px 20px;
+    background:rgba(10,14,26,.98);backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+    transform:translateY(-140%);transition:.35s cubic-bezier(.2,.8,.2,1);
+  }
+  .nav-links.open{transform:none}
+  .mobile-menu{display:block}
+  .lang-switch{margin-left:0;margin-top:8px;align-self:flex-start}
+  .panel{display:block!important;padding:100px 0 50px;height:auto!important}
+  .hero-inner{grid-template-columns:1fr;gap:36px}
+  .hero-visual{order:-1}
+  .services-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr}
+  .visual-card{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTZXN287"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#hero" class="logo">Khun Myint Win</a>
-                <div class="nav-links">
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#business-solutions" class="nav-link">Business Solutions</a>
-                    <a href="#experience" class="nav-link">Experience</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#" onclick="showPanel('home');return false;"><span>Khun Myint Win</span></a>
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link active" data-i18n="nav.home" onclick="showPanel('home')">Home</a>
+        <a class="nav-link" data-i18n="nav.services" onclick="showPanel('services')">Services</a>
+        <a class="nav-link" data-i18n="nav.projects" onclick="showPanel('projects')">Projects</a>
+        <a class="nav-link" data-i18n="nav.contact" onclick="showPanel('contact')">Contact</a>
+        <div class="lang-switch">
+          <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
+          <button id="btnMY" onclick="setLang('my')">မြန်မာ</button>
         </div>
-    </header>
+      </div>
+      <div class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="hero-bg"></div>
-        <div class="container">
-            <div class="hero-content">
-                <p class="hero-subtitle">Hi, This is Khun Myint Win</p>
-                <h1 class="hero-title">Problem Solver & <br>Software Developer</h1>
-                <p class="hero-description">I create innovative solutions for aviation, fintech and e-commerce by transforming complex problems into efficient, scalable, and user-friendly software systems.</p>
-                
-                <div class="hero-buttons">
-                    <a href="#business-solutions" class="btn">View My Work</a>
-                    <a href="assets/Resume_KhunMyintWin.pdf" class="btn btn-secondary" download><i class="fas fa-download"></i> Get My Resume</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
-                </div>
-            </div>
+<!-- ============ HOME ============ -->
+<section class="panel active" id="panel-home">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag"><i class="fas fa-bolt"></i> <span data-i18n="hero.tag">Custom Document Automation · Myanmar</span></div>
+        <h1 class="hero-title" data-i18n-html="hero.title">
+          Stop wasting hours on <em>manual documents.</em><br>Automate it. Grow faster.
+        </h1>
+        <p class="hero-sub" data-i18n="hero.sub">
+          I build tailor-made desktop software that converts, extracts, and syncs your Word, Excel, and PDF files — so your team spends time on profit, not paperwork.
+        </p>
+        <div class="hero-btns">
+          <button class="btn btn-primary" onclick="showPanel('contact')">
+            <i class="fas fa-comments"></i> <span data-i18n="hero.cta1">Book Free Consultation</span>
+          </button>
+          <button class="btn btn-ghost" onclick="showPanel('services')">
+            <span data-i18n="hero.cta2">See Previous Services</span> <i class="fas fa-arrow-right"></i>
+          </button>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text fade-in">
-                    <p class="about-description">
-                        I'm a Computer Science graduate from Hong Kong Baptist University with a focus on Information Systems and Analytics. I excel at leveraging technology to solve real-world problems, particularly in process automation, data analysis, and software development.
-                    </p>
-                    <div class="about-highlight">
-                        <p>My approach goes beyond writing code — I'm committed to understanding business challenges, designing elegant solutions, and implementing systems that drive efficiency and growth. With experience in aviation, e-commerce, and software development, I've developed a keen eye for optimizing processes and creating intuitive user experiences.</p>
-                    </div>
-                    <!-- <p class="about-description">
-                        Having worked with HAECO to develop automation systems that increased efficiency by 90%, I'm passionate about applying my technical expertise to the fintech and e-commerce industries, where innovation and problem-solving can create significant impact.
-                    </p> -->
-                </div>
-                <div class="about-stats">
-                    <!-- <div class="stat-item fade-in">
-                        <div class="stat-icon">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <div class="stat-number">2x</div>
-                        <div class="stat-title">President's Honor Roll</div>
-                    </div> -->
-                    <!-- <div class="stat-item fade-in">
-                        <div class="stat-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="stat-number">90%</div>
-                        <div class="stat-title">Efficiency Improvement</div>
-                    </div>
-                    <div class="stat-item fade-in">
-                        <div class="stat-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div class="stat-number">3+</div>
-                        <div class="stat-title">Development Projects</div>
-                    </div> -->
-                </div>
-            </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-card">
+          <div class="visual-row">
+            <div class="visual-ic"><i class="fas fa-file-word"></i></div>
+            <div class="visual-txt"><b data-i18n="vis.1t">SGML / XML → Word</b><small data-i18n="vis.1s">Procedural docs generated automatically</small></div>
+            <span class="visual-badge">90% faster</span>
+          </div>
+          <div class="visual-row">
+            <div class="visual-ic"><i class="fas fa-file-excel"></i></div>
+            <div class="visual-txt"><b data-i18n="vis.2t">PDF / Images → Excel</b><small data-i18n="vis.2s">Clean data, zero manual entry</small></div>
+            <span class="visual-badge">100% auto</span>
+          </div>
+          <div class="visual-row">
+            <div class="visual-ic"><i class="fas fa-cart-shopping"></i></div>
+            <div class="visual-txt"><b data-i18n="vis.3t">Product & Price Sync</b><small data-i18n="vis.3s">Cards, prices, images updated live</small></div>
+            <span class="visual-badge" data-i18n="vis.3b">Live</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Skills Section -->
-    <!-- <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category fade-in">
-                    <div class="category-title">
-                        <i class="fas fa-code"></i>
-                        <span>Programming Languages</span>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item"><i class="fab fa-python"></i> Python</div>
-                        <div class="skill-item"><i class="fab fa-java"></i> Java</div>
-                        <div class="skill-item"><i class="fab fa-js"></i> JavaScript</div>
-                        <div class="skill-item"><i class="fas fa-database"></i> SQL</div>
-                        <div class="skill-item"><i class="fab fa-html5"></i> HTML</div>
-                        <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS</div>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <div class="category-title">
-                        <i class="fas fa-layer-group"></i>
-                        <span>Frameworks & Libraries</span>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item"><i class="fab fa-react"></i> React Native</div>
-                        <div class="skill-item"><i class="fab fa-node-js"></i> Node.js</div>
-                        <div class="skill-item"><i class="fab fa-vuejs"></i> Vue.js</div>
-                        <div class="skill-item"><i class="fab fa-bootstrap"></i> Bootstrap</div>
-                        <div class="skill-item"><i class="fas fa-mobile-alt"></i> Expo</div>
-                        <div class="skill-item"><i class="fas fa-server"></i> RESTful API</div>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <div class="category-title">
-                        <i class="fas fa-tools"></i>
-                        <span>Tools & Technologies</span>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item"><i class="fas fa-database"></i> MongoDB</div>
-                        <div class="skill-item"><i class="fas fa-chart-bar"></i> Tableau</div>
-                        <div class="skill-item"><i class="fas fa-chart-line"></i> Data Analysis</div>
-                        <div class="skill-item"><i class="fab fa-github"></i> Git/GitHub</div>
-                        <div class="skill-item"><i class="fas fa-paint-brush"></i> Photoshop</div>
-                        <div class="skill-item"><i class="fas fa-video"></i> Video Editing</div>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <div class="category-title">
-                        <i class="fas fa-user-tie"></i>
-                        <span>Professional Skills</span>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item"><i class="fas fa-lightbulb"></i> Problem-Solving</div>
-                        <div class="skill-item"><i class="fas fa-users"></i> Teamwork</div>
-                        <div class="skill-item"><i class="fas fa-comments"></i> Communication</div>
-                        <div class="skill-item"><i class="fas fa-tasks"></i> Project Management</div>
-                        <div class="skill-item"><i class="fas fa-sync-alt"></i> Adaptability</div>
-                        <div class="skill-item"><i class="fas fa-brain"></i> Quick Learner</div>
-                    </div>
-                </div>
-            </div>
+<!-- ============ SERVICES ============ -->
+<section class="panel" id="panel-services">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="serv.h2">What I Automate For You</h2>
+      <p data-i18n="serv.p">Every solution is built around your exact workflow — not a template. Tell me the process, I'll build the tool.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-ic"><i class="fas fa-file-word"></i></div>
+        <h3 data-i18n="serv.1t">Document Conversion</h3>
+        <p data-i18n="serv.1p">Convert SGML, XML, PDF, or images into perfectly formatted Word and Excel files — instantly and error-free.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-ic"><i class="fas fa-table"></i></div>
+        <h3 data-i18n="serv.2t">Data Extraction</h3>
+        <p data-i18n="serv.2p">Pull tables and fields from PDFs and scans, clean the data, and export to Excel — no copy-paste ever again.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-ic"><i class="fas fa-diagram-project"></i></div>
+        <h3 data-i18n="serv.3t">Workflow & Approval Automation</h3>
+        <p data-i18n="serv.3p">Replace paper forms and email chains with paperless approval workflows that track everything automatically.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-ic"><i class="fas fa-desktop"></i></div>
+        <h3 data-i18n="serv.4t">Custom Desktop Tools</h3>
+        <p data-i18n="serv.4p">A Windows or Mac app built for your repetitive task — price syncing, file processing, reporting, whatever eats your time.</p>
+      </div>
+      <div class="service-card free">
+        <div class="service-ic"><i class="fas fa-lightbulb"></i></div>
+        <h3 data-i18n="serv.5t">Free Consultation Session</h3>
+        <p data-i18n="serv.5p">Not sure what's worth automating? Book a free call — I'll map your workflow and show you exactly where the profit is.</p>
+      </div>
+      <div class="service-card" style="background:rgba(232,182,76,.05);border-color:rgba(232,182,76,.35)">
+        <div class="service-ic"><i class="fas fa-shield-halved"></i></div>
+        <h3 data-i18n="serv.6t">Fast & Reliable Delivery</h3>
+        <p data-i18n="serv.6p">Clear scope, fixed timeline, working product. Built on proven tools, tested on your real data before handover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="panel" id="panel-projects">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="proj.h2">Delivered Solutions</h2>
+      <p data-i18n="proj.p">Real projects, real results — across aviation, e-commerce, and trading-card retail.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-ic"><i class="fas fa-plane"></i></div>
+        <div class="proj-body">
+          <h3 data-i18n="proj.1t">Procedural Doc Automation</h3>
+          <div class="proj-meta" data-i18n="proj.1m">Aviation MRO Leader</div>
+          <p data-i18n="proj.1p">Python system parsing SGML/XML into compliant Word documents for aircraft maintenance procedures.</p>
+          <div class="proj-tags"><span>Python</span><span>SGML/XML</span><span>Automation</span></div>
+          <div class="proj-stat"><i class="fas fa-bolt"></i> <span data-i18n="proj.1s">90% efficiency gain</span></div>
         </div>
-    </section> -->
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category fade-in">
-                    <div class="category-title">
-                        <i class="fas fa-code"></i>
-                        <span>Programming Languages</span>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item"><i class="fab fa-python"></i> Python</div>
-                        <div class="skill-item"><i class="fab fa-java"></i> Java</div>
-                        <div class="skill-item"><i class="fab fa-js"></i> JavaScript</div>
-                        <div class="skill-item"><i class="fas fa-database"></i> SQL</div>
-                        <div class="skill-item"><i class="fab fa-html5"></i> HTML</div>
-                        <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS</div>
-                    </div>
-                </div>
-
-                <div class="skill-category fade-in">
-                    <div class="category-title">
-                        <i class="fas fa-layer-group"></i>
-                        <span>Frameworks & Libraries</span>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item"><i class="fab fa-react"></i> React Native</div>
-                        <div class="skill-item"><i class="fab fa-node-js"></i> Node.js</div>
-                        <div class="skill-item"><i class="fab fa-vuejs"></i> Vue.js</div>
-                        <div class="skill-item"><i class="fab fa-bootstrap"></i> Bootstrap</div>
-                        <div class="skill-item"><i class="fas fa-mobile-alt"></i> Expo</div>
-                        <div class="skill-item"><i class="fas fa-server"></i> RESTful API</div>
-                    </div>
-                </div>
-
-                <div class="skill-category fade-in">
-                    <div class="category-title">
-                        <i class="fas fa-plug"></i>
-                        <span>Microsoft Power Platform</span>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item"><i class="fas fa-mobile-screen"></i> Power Apps</div>
-                        <div class="skill-item"><i class="fas fa-bolt"></i> Power Automate</div>
-                        <div class="skill-item"><i class="fab fa-microsoft"></i> SharePoint</div>
-                        <div class="skill-item"><i class="fas fa-table"></i> Dataverse</div>
-                    </div>
-                </div>
-
-                <div class="skill-category fade-in">
-                    <div class="category-title">
-                        <i class="fas fa-toolbox"></i>
-                        <span>Data & Development Tools</span>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item"><i class="fas fa-database"></i> MySQL</div>
-                        <div class="skill-item"><i class="fas fa-leaf"></i> MongoDB</div>
-                        <div class="skill-item"><i class="fas fa-elephant"></i> PostgreSQL</div>
-                        <div class="skill-item"><i class="fas fa-bolt"></i> Supabase</div>
-                        <div class="skill-item"><i class="fab fa-git-alt"></i> Git</div>
-                        <div class="skill-item"><i class="fab fa-docker"></i> Docker</div>
-                        <div class="skill-item"><i class="fas fa-chart-bar"></i> Tableau</div>
-                        <div class="skill-item"><i class="fas fa-file-excel"></i> Excel</div>
-                        <div class="skill-item"><i class="fas fa-chart-pie"></i> Power BI</div>
-                        <div class="skill-item"><i class="fas fa-chart-line"></i> Data Analysis</div>
-                    </div>
-                </div>
-
-                <div class="skill-category fade-in">
-                    <div class="category-title">
-                        <i class="fas fa-palette"></i>
-                        <span>Design & Multimedia</span>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item"><i class="fas fa-paint-brush"></i> Photoshop</div>
-                        <div class="skill-item"><i class="fas fa-video"></i> Video Editing</div>
-                    </div>
-                </div>
-
-                <div class="skill-category fade-in">
-                    <div class="category-title">
-                        <i class="fas fa-user-tie"></i>
-                        <span>Professional Skills</span>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item"><i class="fas fa-seedling"></i> Growth Mindset</div>
-                        <div class="skill-item"><i class="fas fa-shield-alt"></i> Resilience</div>
-                        <div class="skill-item"><i class="fas fa-check-double"></i> Get-Things-Done Mentality</div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-ic"><i class="fas fa-file-invoice"></i></div>
+        <div class="proj-body">
+          <h3 data-i18n="proj.2t">PDF → Excel Extraction</h3>
+          <div class="proj-meta" data-i18n="proj.2m">Aviation MRO Leader</div>
+          <p data-i18n="proj.2p">Extracted table data from PDFs and images, cleansed it, and generated Tool Capability Lists in Excel.</p>
+          <div class="proj-tags"><span>Python</span><span>PDF Extraction</span><span>Excel</span></div>
+          <div class="proj-stat"><i class="fas fa-check-double"></i> <span data-i18n="proj.2s">Manual work eliminated</span></div>
         </div>
-    </section>
-
-
-    <!-- Business solutions Section -->
-    <section id="business-solutions">
-        <div class="container">
-            <h2 class="section-title">Business Solutions</h2>
-            <div class="project-cards">
-                <div class="haeco-card scale-in">
-                    <div class="haeco-icon">
-                        <i class="fas fa-file-word"></i>
-                    </div>
-                    <div class="haeco-content">
-                        <h3 class="haeco-title">Automated Data Conversion for Procedural Documentation</h3>
-                        <div class="haeco-stats">
-                            <div class="haeco-stat">
-                                <div class="haeco-stat-number">90%</div>
-                                <div class="haeco-stat-label">Efficiency Gain</div>
-                            </div>
-                        </div>
-                        <p class="haeco-description">
-                            Developed a Python-based automation system to parse SGML and XML format data into Word documents, generating procedural documents for aircraft maintenance, repairs, and inspections, while ensuring precision and compliance with aviation standards.
-                        </p>
-                        <div class="haeco-tags">
-                            <span class="haeco-tag">Python</span>
-                            <span class="haeco-tag">SGML/XML</span>
-                            <span class="haeco-tag">Automation</span>
-                            <span class="haeco-tag">Document Processing</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="haeco-card scale-in">
-                    <div class="haeco-icon">
-                        <i class="fas fa-file-excel"></i>
-                    </div>
-                    <div class="haeco-content">
-                        <h3 class="haeco-title">PDF/Images Data Extraction System</h3>
-                        <div class="haeco-stats">
-                            <div class="haeco-stat">
-                                <div class="haeco-stat-number">100%</div>
-                                <div class="haeco-stat-label">Manual Work Eliminated</div>
-                            </div>
-                        </div>
-                        <p class="haeco-description">
-                            Designed a system to extract critical data in table format from PDFs and images including data cleansing and analysis, and converted it into Excel format to create Tool Capability Lists for BOEING aircraft maintenance, eliminating manual input and ensuring accuracy.
-                        </p>
-                        <div class="haeco-tags">
-                            <span class="haeco-tag">Python</span>
-                            <span class="haeco-tag">PDF Extraction</span>
-                            <span class="haeco-tag">Data Cleansing</span>
-                            <span class="haeco-tag">Excel</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="haeco-card scale-in">
-                    <div class="haeco-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="haeco-content">
-                        <h3 class="haeco-title">Real-Time Tooling Database System</h3>
-                        <div class="haeco-stats">
-                            <div class="haeco-stat">
-                                <div class="haeco-stat-number">90%</div>
-                                <div class="haeco-stat-label">Efficiency Increase</div>
-                            </div>
-                        </div>
-                        <p class="haeco-description">
-                            Developed a Python-based system to extract tool list data from SGML and XML files and converted it into Excel format. This enabled real-time tooling database capabilities, improved decision-making, and allowed faster responses to market or audit inquiries.
-                        </p>
-                        <div class="haeco-tags">
-                            <span class="haeco-tag">Python</span>
-                            <span class="haeco-tag">SGML/XML</span>
-                            <span class="haeco-tag">Data Processing</span>
-                            <span class="haeco-tag">Real-time Database</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="haeco-card scale-in">
-                    <div class="haeco-icon">
-                        <i class="fas fa-question-circle"></i>
-                    </div>
-                    <div class="haeco-content">
-                        <h3 class="haeco-title">Interactive and Customizable FAQs App</h3>
-                        <div class="haeco-stats">
-                            <div class="haeco-stat">
-                                <div class="haeco-stat-number">100%</div>
-                                <div class="haeco-stat-label">User-Friendly</div>
-                            </div>
-                        </div>
-                        <p class="haeco-description">
-                            Developed an easy-to-modify questions and answers FAQs platform using Power Apps through integrating other Power Platform tools, enabling seamless content management and improved user experience for the Technical Publication Center.
-                        </p>
-                        <div class="haeco-tags">
-                            <span class="haeco-tag">Power Apps</span>
-                            <span class="haeco-tag">Power Platform</span>
-                            <span class="haeco-tag">SharePoint</span>
-                            <span class="haeco-tag">Low-Code</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="haeco-card scale-in">
-                    <div class="haeco-icon">
-                        <i class="fas fa-file-signature"></i>
-                    </div>
-                    <div class="haeco-content">
-                        <h3 class="haeco-title">Enterprise-Grade E-Form System for Approval Workflow</h3>
-                        <div class="haeco-stats">
-                            <div class="haeco-stat">
-                                <div class="haeco-stat-number">100%</div>
-                                <div class="haeco-stat-label">Paperless</div>
-                            </div>
-                        </div>
-                        <p class="haeco-description">
-                            Developed a comprehensive e-form solution using Microsoft Power Platform (Power Apps, Power Automate, SharePoint, Excel, Forms) to replace a paper-based approval process used in the entire organization, streamlining workflows and enhancing efficiency.
-                        </p>
-                        <div class="haeco-tags">
-                            <span class="haeco-tag">Power Apps</span>
-                            <span class="haeco-tag">Power Automate</span>
-                            <span class="haeco-tag">SharePoint</span>
-                            <span class="haeco-tag">Workflow Automation</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-ic"><i class="fas fa-cart-shopping"></i></div>
+        <div class="proj-body">
+          <h3 data-i18n="proj.3t">E-Commerce Store Renovation</h3>
+          <div class="proj-meta" data-i18n="proj.3m">E-Commerce Retailer</div>
+          <p data-i18n="proj.3p">Rebuilt a WordPress storefront's backend and frontend for smoother operations and better customer flow.</p>
+          <div class="proj-tags"><span>WordPress</span><span>Front-end</span><span>Back-end</span></div>
         </div>
-    </section>
-
-    <!-- Work Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Oct 2024 - Present</div>
-                        <h3 class="timeline-title">Part-Time Analyst Programmer</h3>
-                        <span class="timeline-company">HAECO (Hong Kong Aircraft Engineering Company Limited)</span>
-                        <p class="timeline-description">Developed automation systems and data extraction tools to enhance operational efficiency while ensuring precision for aircraft maintenance documentation.</p>
-                        <div class="timeline-tags">
-                            <span class="timeline-tag">Python</span>
-                            <span class="timeline-tag">Automation</span>
-                            <span class="timeline-tag">Data Processing</span>
-                            <span class="timeline-tag">XML/SGML</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jun 2024 - Aug 2024</div>
-                        <h3 class="timeline-title">Summer Intern</h3>
-                        <span class="timeline-company">HAECO (Hong Kong Aircraft Engineering Company Limited)</span>
-                        <p class="timeline-description">Developed a Python-based application that increased efficiency by 90%, enabling real-time tooling database capabilities for aircraft to improve decision-making and allow faster responses to market inquiries.</p>
-                        <div class="timeline-tags">
-                            <span class="timeline-tag">Python</span>
-                            <span class="timeline-tag">Database Management</span>
-                            <span class="timeline-tag">Real-time Data</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Dec 2023 - Jan 2024</div>
-                        <h3 class="timeline-title">Programmer, Winter Internship</h3>
-                        <span class="timeline-company">IGEARS Technology Limited</span>
-                        <p class="timeline-description">Developed a window and mac application used to point a device's dynamic IP address to a static hostname on a website using Python, SQL, PHP, HTML and CSS, similar to a no-ip desktop application.</p>
-                        <div class="timeline-tags">
-                            <span class="timeline-tag">Python</span>
-                            <span class="timeline-tag">SQL</span>
-                            <span class="timeline-tag">PHP</span>
-                            <span class="timeline-tag">HTML/CSS</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jun 2023 - Aug 2023</div>
-                        <h3 class="timeline-title">Software Development Assistant</h3>
-                        <span class="timeline-company">Latent Links Limited</span>
-                        <p class="timeline-description">Led the renovation of a WordPress e-commerce website (Femmake.com), enhancing both backend and frontend functionalities while collaborating with cross-functional teams to ensure seamless project execution.</p>
-                        <div class="timeline-tags">
-                            <span class="timeline-tag">WordPress</span>
-                            <span class="timeline-tag">E-commerce</span>
-                            <span class="timeline-tag">Web Development</span>
-                            <span class="timeline-tag">Front-end</span>
-                            <span class="timeline-tag">Back-end</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="proj-card" style="border-color:rgba(63,208,201,.35)">
+        <div class="proj-ic" style="background:rgba(63,208,201,.14);color:var(--teal)"><i class="fas fa-layer-group"></i></div>
+        <div class="proj-body">
+          <h3 data-i18n="proj.4t">Trading Card Price & Image Sync</h3>
+          <div class="proj-meta" data-i18n="proj.4m">Trading-Card Retailer</div>
+          <p data-i18n="proj.4p">Scrapes card prices and images (eg.Pokémon · Lorcana) from card websites (tcgcsv.com, yuyu-tei.jp), organizes them into Excel, and uploads directly to the customer's site — with on-demand price refresh, replacing one-by-one manual uploads.</p>
+          <div class="proj-tags"><span>Python</span><span>Web Scraping</span><span>Excel</span><span>Auto Upload</span></div>
+          <div class="proj-stat"><i class="fas fa-arrow-trend-up"></i> <span data-i18n="proj.4s">Always up-to-date pricing</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-container">
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Location-Based Attendance App</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">React Native</span>
-                            <span class="project-tag">Expo</span>
-                            <span class="project-tag">Appwrite</span>
-                            <span class="project-tag">Geolocation</span>
-                        </div>
-                        <p class="project-description">Built a cross-platform mobile app for attendance tracking using verification code and geolocation to ensure files are accessible only within a set geographic area on the map, enhancing security and accuracy.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline btn-sm">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <i class="fas fa-baseball-ball"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Player Management System</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">MongoDB</span>
-                            <span class="project-tag">Node.js</span>
-                            <span class="project-tag">Vue.js</span>
-                            <span class="project-tag">Bootstrap</span>
-                            <span class="project-tag">HTML/CSS</span>
-                        </div>
-                        <p class="project-description">Developed a responsive players and team schedule management website for the Hong Kong China Softball Association using modern web technologies and full-stack development practices.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline btn-sm">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Event & Volunteer Management System</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">MongoDB</span>
-                            <span class="project-tag">Node.js</span>
-                            <span class="project-tag">Vue.js</span>
-                            <span class="project-tag">Bootstrap</span>
-                            <span class="project-tag">Responsive</span>
-                        </div>
-                        <p class="project-description">Developed a responsive event and volunteer management website prototype using full-stack technologies to streamline event coordination and volunteer assignment processes.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline btn-sm">View Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ============ CONTACT ============ -->
+<section class="panel" id="panel-contact">
+  <div class="container">
+    <div class="contact-solo">
+      <div class="contact-copy">
+        <h2 data-i18n="con.h2">Let's Talk About Your Workflow</h2>
+        <p data-i18n="con.p">Tell me what process slows your team down. I'll reply with a clear plan — and a free consultation to find what's worth automating.</p>
+        <div class="contact-methods">
+          <a class="cmethod" href="viber://chat?number=%2B85267978935">
+            <div class="cmethod-ic viber"><i class="fab fa-viber"></i></div>
+            <div><small data-i18n="con.viberL">Viber</small><b>+852 6797 8935</b></div>
+          </a>
+          <a class="cmethod" href="mailto:khunmyintwin436@gmail.com">
+            <div class="cmethod-ic mail"><i class="fas fa-envelope"></i></div>
+            <div><small data-i18n="con.mailL">Email</small><b>khunmyintwin436@gmail.com</b></div>
+          </a>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-methods">
-                    <div class="contact-card scale-in">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <h3 class="contact-type">Phone</h3>
-                        <p class="contact-value">(+852) 9152 4185</p>
-                    </div>
-                    
-                    <div class="contact-card scale-in">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h3 class="contact-type">Email</h3>
-                        <a href="mailto:johnwin444@gmail.com" class="contact-value">khunmyintwin436@gmail.com</a>
-                    </div>
-                    
-                    <div class="contact-card scale-in">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h3 class="contact-type">Location</h3>
-                        <p class="contact-value">Hong Kong SAR</p>
-                    </div>
-                </div>
-                
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/khunmyintwin/" class="social-link" target="_blank" title="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/KhunWin" class="social-link" target="_blank" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="mailto:khunmyintwin436@gmail.com" class="social-link" title="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<footer>
+  <div class="container">
+    <span data-i18n="foot">© 2025 WIN Khun Myint · Custom document automation for Myanmar businesses.</span>
+  </div>
+</footer>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">WIN Khun Myint</div>
-                <div class="footer-links">
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#business-solutions">Business Solutions</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/johnwin444/" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/JohnWin" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="mailto:johnwin444@gmail.com">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-                <div class="copyright">
-                    &copy; 2025 WIN Khun Myint. All rights reserved.
-                </div>
-            </div>
-        </div>
-    </footer>
+<script>
+/* ---------- i18n ---------- */
+const I18N = {
+  en:{
+    "nav.home":"Home","nav.services":"Services","nav.projects":"Projects","nav.contact":"Contact",
+    "hero.tag":"Custom Document Automation · Myanmar",
+    "hero.title":"Stop wasting hours on <em>manual documents.</em><br>Automate it. Grow faster.",
+    "hero.sub":"I build tailor-made desktop software that converts, extracts, and syncs your Word, Excel, and PDF files — so your team spends time on profit, not paperwork.",
+    "hero.cta1":"Book Free Consultation","hero.cta2":"See Services",
+    "vis.1t":"SGML / XML → Word","vis.1s":"Procedural docs generated automatically",
+    "vis.2t":"PDF / Images → Excel","vis.2s":"Clean data, zero manual entry",
+    "vis.3t":"Product & Price Sync","vis.3s":"Cards, prices, images updated live","vis.3b":"Live",
+    "serv.h2":"What I Automate For You",
+    "serv.p":"Every solution is built around your exact workflow — not a template. Tell me the process, I'll build the tool.",
+    "serv.1t":"Document Conversion","serv.1p":"Convert SGML, XML, PDF, or images into perfectly formatted Word and Excel files — instantly and error-free.",
+    "serv.2t":"Data Extraction","serv.2p":"Pull tables and fields from PDFs and scans, clean the data, and export to Excel — no copy-paste ever again.",
+    "serv.3t":"Workflow & Approval Automation","serv.3p":"Replace paper forms and email chains with paperless approval workflows that track everything automatically.",
+    "serv.4t":"Custom Desktop Tools","serv.4p":"A Windows or Mac app built for your repetitive task — price syncing, file processing, reporting, whatever eats your time.",
+    "serv.5t":"Free Consultation Session","serv.5p":"Not sure what's worth automating? Book a free call — I'll map your workflow and show you exactly where the profit is.",
+    "serv.6t":"Fast & Reliable Delivery","serv.6p":"Clear scope, fixed timeline, working product. Built on proven tools, tested on your real data before handover.",
+    "proj.h2":"Delivered Solutions",
+    "proj.p":"Real projects, real results — across aviation, e-commerce, and trading-card retail.",
+    "proj.1t":"Procedural Doc Automation","proj.1m":"Aviation MRO Leader",
+    "proj.1p":"Python system parsing SGML/XML into compliant Word documents for aircraft maintenance procedures.","proj.1s":"90% efficiency gain",
+    "proj.2t":"PDF → Excel Extraction","proj.2m":"Aviation MRO Leader",
+    "proj.2p":"Extracted table data from PDFs and images, cleansed it, and generated Tool Capability Lists in Excel.","proj.2s":"Manual work eliminated",
+    "proj.3t":"E-Commerce Store Renovation","proj.3m":"E-Commerce Retailer",
+    "proj.3p":"Rebuilt a WordPress storefront's backend and frontend for smoother operations and better customer flow.",
+    "proj.4t":"Trading Card Price & Image Sync","proj.4m":"Trading-Card Retailer (Pokémon · Lorcana)",
+    "proj.4p":"Scrapes card prices and images from card websites, organizes them into Excel, and uploads directly to the customer's site — with on-demand price refresh, replacing one-by-one manual uploads.","proj.4s":"Always up-to-date pricing",
+    "con.h2":"Let's Talk About Your Workflow",
+    "con.p":"Tell me what process slows your team down. I'll reply with a clear plan — and a free consultation to find what's worth automating.",
+    "con.viberL":"Viber","con.mailL":"Email",
+    "form.h":"Request a Free Consultation","form.p":"Fill this in and I'll get back to you within 24 hours.",
+    "form.name":"Your Name","form.biz":"Business / Industry","form.auto":"What do you want to automate?","form.btn":"Send Request",
+    "foot":"© 2025 WIN Khun Myint · Custom document automation for Myanmar businesses."
+  },
+  my:{
+    "nav.home":"ပင်မ","nav.services":"ဝန်ဆောင်မှုများ","nav.projects":"ပရောဂျက်များ","nav.contact":"ဆက်သွယ်ရန်",
+    "hero.tag":"စာရွက်စာတမ်း အလိုအလျောက်စနစ် · မြန်မာ",
+    "hero.title":"စာရွက်စာတမ်း <em>ကိုယ်တိုင်လုပ်ရတဲ့</em> အချိန်တွေ ရပ်ပြီး<br>အလိုအလျောက်လုပ်လို့ရပါပြီး။",
+    "hero.sub":"သင့်ရဲ့ Word၊ Excel နဲ့ PDF ဖိုင်တွေကို ပြောင်းလဲ၊ ထုတ်ယူ၊ ချိတ်ဆက်ပေးတဲ့ သင့်အတွက် အထူးဖန်တီးထားတဲ့ desktop software ကို ကျွန်တော် တည်ဆောက်ပေးပါတယ် — သင့်အဖွဲ့က စာရွက်စာတမ်းအစား အမြတ်အစွန်းအတွက် အချိန်ပေးနိုင်ပါတယ်။",
+    "hero.cta1":"အခမဲ့ တိုင်ပင်ဆွေးနွေးရန်","hero.cta2":"ဝန်ဆောင်မှုများ ကြည့်ရန်",
+    "vis.1t":"SGML / XML → Word","vis.1s":"လုပ်ထုံးလုပ်နည်း စာရွက်စာတမ်းများ အလိုအလျောက် ထုတ်ပေးသည်",
+    "vis.2t":"PDF / ပုံများ → Excel","vis.2s":"သန့်ရှင်းသော ဒေတာ၊ ကိုယ်တိုင်ထည့်ရန် မလို",
+    "vis.3t":"ကုန်ပစ္စည်း နှင့် ဈေးနှုန်း ချိတ်ဆက်မှု","vis.3s":"ကတ်များ၊ ဈေးနှုန်းများ၊ ပုံများ အချိန်နှင့်တပြေးညီ မွမ်းမံသည်","vis.3b":"တိုက်ရိုက်",
+    "serv.h2":"သင့်အတွက် ကျွန်တော် အလိုအလျောက်လုပ်ပေးသည့် အရာများ",
+    "serv.p":"ဝန်ဆောင်မှုတိုင်းက သင့်လုပ်ငန်းစဉ်အတိုင်း တည်ဆောက်ထားတာပါ — ပုံစံခွက်မဟုတ်ပါ။ သင့်ရဲ့လုပ်ငန်းစဉ်ကို ပြောပြပါ၊ ကျွန်တော် tool ကို တည်ဆောက်ပေးပါမယ်။",
+    "serv.1t":"စာရွက်စာတမ်း ပြောင်းလဲခြင်း","serv.1p":"SGML၊ XML၊ PDF သို့မဟုတ် ပုံများကို ပုံစံပြည့်ဝသော Word နှင့် Excel ဖိုင်များအဖြစ် ချက်ချင်း၊ အမှားအယွင်းမရှိ ပြောင်းလဲခြင်း",
+    "serv.2t":"ဒေတာ ထုတ်ယူခြင်း","serv.2p":"PDF နှင့် စကန်ဖတ်ထားသော ဖိုင်များမှ ဇယားများနှင့် ဒေတာများကို ဆွဲထုတ်၊ သန့်ရှင်းစေပြီး Excel သို့ ထုတ်ပေးသည် — copy-paste ထပ်လုပ်ရန် မလို။",
+    "serv.3t":"လုပ်ငန်းစဉ် နှင့် အတည်ပြုချက် အလိုအလျောက်စနစ်","serv.3p":"စာရွက်ဖောင် နှင့် အီးမေးလ် ကွင်းဆက်များကို အလိုအလျောက် ခြေရာခံသည့် စာရွက်မဲ့ အတည်ပြုချက် လုပ်ငန်းစဉ်များဖြင့် အစားထိုးပေးခြင်း",
+    "serv.4t":"အထူး Desktop Tool များ","serv.4p":"သင့်ထပ်ခါထပ်ခါ လုပ်ရသော အလုပ်အတွက် Windows သို့မဟုတ် Mac app — ဈေးနှုန်းချိတ်ဆက်မှု၊ ဖိုင်လုပ်ဆောင်မှု၊ အစီရင်ခံစာ၊ သင့်အချိန်ကို စားနေသမျှ။",
+    "serv.5t":"အခမဲ့ တိုင်ပင်ဆွေးနွေးခြင်း","serv.5p":"ဘာကို အလိုအလျောက်လုပ်သင့်လဲ မသေချာဘူးလား? အခမဲ့ ဖုန်းခေါ်ဆိုမှု ကြိုတင်မှာယူပါ — သင့်လုပ်ငန်းစဉ်ကို ပုံဖော်ပြပြီး အမြတ်အစွန်း ဘယ်မှာရှိလဲ ပြသပါမည်။",
+    "serv.6t":"မြန်ဆန် ယုံကြည်စိတ်ချရသော ပေးအပ်မှု","serv.6p":"ရှင်းလင်းသော အတိုင်းအတာ၊ သတ်မှတ်ထားသော အချိန်ဇယား၊ အလုပ်လုပ်သော ထုတ်ကုန်။ သင့်အချက်အလက်အပေါ် စမ်းသပ်ပြီးမှ ပေးအပ်ပါသည်။",
+    "proj.h2":"ပေးအပ်ပြီးသော ပရောဂျက်များ",
+    "proj.p":"တကယ့် ပရောဂျက်များ၊ တကယ့် ရလဒ်များ — လေကြောင်း၊ e-commerce နှင့် trading card လက်လီရောင်းချမှုတို့တွင်။",
+    "proj.1t":"လုပ်ထုံးလုပ်နည်း စာရွက်စာတမ်း အလိုအလျောက်စနစ်","proj.1m":"လေကြောင်းပြုပြင်ထိန်းသိမ်းရေးကုမ္ပဏီ",
+    "proj.1p":"လေယာဉ် ပြုပြင်ထိန်းသိမ်းမှု လုပ်ထုံးလုပ်နည်းများအတွက် SGML/XML ကို ကိုက်ညီသော Word စာရွက်စာတမ်းများအဖြစ် ပြောင်းလဲပေးသော Python စနစ်။","proj.1s":"၉၀% ထိရောက်မှု တိုးတက်",
+    "proj.2t":"PDF → Excel ဒေတာထုတ်ယူမှု","proj.2m":"လေကြောင်းပြုပြင်ထိန်းသိမ်းရေးကုမ္ပဏီ",
+    "proj.2p":"PDF နှင့် ပုံများမှ ဇယားဒေတာများကို ထုတ်ယူ၊ သန့်ရှင်းစေပြီး Excel တွင် Tool Capability List များ ဖန်တီးပေးသည်။","proj.2s":"ကိုယ်တိုင်လုပ်ရမှု ပပျောက်",
+    "proj.3t":"E-Commerce ဆိုင်ပြုပြင်မွမ်းမံမှု","proj.3m":"E-Commerce လုပ်ငန်း",
+    "proj.3p":"ပိုမိုချောမွေ့သော လုပ်ငန်းဆောင်ရွက်မှုနှင့် ဖောက်သည်စီးဆင်းမှုအတွက် WordPress ဆိုင်၏ backend နှင့် frontend ကို ပြန်လည်တည်ဆောက်ခဲ့သည်။",
+    "proj.4t":"Trading Card ဈေးနှုန်း နှင့် ပုံ ချိတ်ဆက်မှု","proj.4m":"Trading-Card လက်လီရောင်းချသူ (Pokémon · Lorcana)",
+    "proj.4p":"ကတ်ဝဘ်ဆိုဒ်များမှ ကတ်ဈေးနှုန်းနှင့် ပုံများကို ဆွဲထုတ်၊ Excel တွင် စီစဉ်ပြီး ဖောက်သည်ဆိုဒ်သို့ တိုက်ရိုက်တင်ပေးသည် — တစ်ခုချင်း ကိုယ်တိုင်တင်ရန် အစား လိုအပ်ချိန်တွင် ဈေးနှုန်းများ အသစ်ပြန်လည်သတ်မှတ်နိုင်သည်။","proj.4s":"အမြဲတမ်း ဈေးနှုန်းအသစ်",
+    "con.h2":"သင့်လုပ်ငန်းစဉ်အကြောင်း ဆွေးနွေးကြရအောင်",
+    "con.p":"သင့်လုပ်ငန်းကို နှေးကွေးစေတဲ့ လုပ်ငန်းစဉ်ကို ပြောပြပြီး— ဘာကို အလိုအလျောက်လုပ်သင့်လဲ ရှာဖွေဖို့ အခမဲ့ တိုင်ပင်ဆွေးနွေးမှုလည်း ပါဝင်ပါတယ်။",
+    "con.viberL":"Viber","con.mailL":"အီးမေးလ်",
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Smooth scrolling with enhanced physics
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    // Using better easing function
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
-        
-        // Enhanced scroll animations with sequential delays
-        const fadeElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in');
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        const haecoCars = document.querySelectorAll('.haeco-card');
-        
-        const applyAnimationWithDelay = (elements, baseDelay = 0) => {
-            elements.forEach((element, index) => {
-                const delay = baseDelay + (index * 0.15); // 150ms staggered delay
-                element.style.transitionDelay = `${delay}s`;
-            });
-        };
-        
-        // Apply staggered delays to timeline items and HAECO cards
-        applyAnimationWithDelay(timelineItems);
-        applyAnimationWithDelay(haecoCars);
-        
-        // Observer configuration
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        // Create observer for all animated elements
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // Unobserve after animation is triggered
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        // Observe all elements that need animations
-        fadeElements.forEach(element => {
-            observer.observe(element);
-        });
-        
-        timelineItems.forEach(item => {
-            observer.observe(item);
-        });
-        
-        haecoCars.forEach(card => {
-            observer.observe(card);
-        });
-        
-        // Active navigation link based on scroll position with better detection
-        function updateActiveLink() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let currentSectionId = '';
-            let minDistance = Number.MAX_VALUE;
-            
-            const scrollPosition = window.scrollY + 200; // Adjust offset for better accuracy
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-                
-                // Calculate distance to section
-                const distance = Math.abs(scrollPosition - sectionTop);
-                
-                // Check if we're within this section or if this is the closest section
-                if ((scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) || 
-                    distance < minDistance) {
-                    minDistance = distance;
-                    currentSectionId = sectionId;
-                }
-            });
-            
-            // Update active class
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-        
-        // Add debounce to scroll events for better performance
-        function debounce(func, wait = 15, immediate = true) {
-            let timeout;
-            return function() {
-                const context = this, args = arguments;
-                const later = function() {
-                    timeout = null;
-                    if (!immediate) func.apply(context, args);
-                };
-                const callNow = immediate && !timeout;
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-                if (callNow) func.apply(context, args);
-            };
-        }
-        
-        // Use debounced scroll handler
-        window.addEventListener('scroll', debounce(function() {
-            updateActiveLink();
-        }, 10));
-        
-        // Initial active link on page load
-        updateActiveLink();
-        
-        // Parallax effect on hero section
-        function parallax() {
-            const hero = document.querySelector('#hero');
-            if (hero) {
-                const scrollPosition = window.pageYOffset;
-                hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
-            }
-        }
-        
-        window.addEventListener('scroll', debounce(parallax, 10));
-    </script>
+    "foot":"© ၂၀၂၅ WIN Khun Myint · မြန်မာလုပ်ငန်းများအတွက် စာရွက်စာတမ်း အလိုအလျောက်စနစ်။"
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function applyLang(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(I18N[currentLang][k]) el.textContent = I18N[currentLang][k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-html');
+    if(I18N[currentLang][k]) el.innerHTML = I18N[currentLang][k];
+  });
+  document.documentElement.lang = currentLang === 'my' ? 'my' : 'en';
+  document.getElementById('btnEN').classList.toggle('active', currentLang==='en');
+  document.getElementById('btnMY').classList.toggle('active', currentLang==='my');
+  localStorage.setItem('lang', currentLang);
+}
+
+function setLang(lang){
+  currentLang = lang;
+  applyLang();
+}
+
+/* ---------- PANEL SWITCHING ---------- */
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  const map = {home:0,services:1,projects:2,contact:3};
+  const links = document.querySelectorAll('.nav-link');
+  if(links[map[id]]) links[map[id]].classList.add('active');
+  // close mobile menu
+  document.getElementById('navLinks').classList.remove('open');
+  // on mobile, scroll to top of panel
+  if(window.innerWidth <= 860) window.scrollTo({top:0,behavior:'smooth'});
+  // On mobile all panels are visible; jump to target
+  if(window.innerWidth <= 860){
+    const target = document.getElementById('panel-'+id);
+    if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+
+/* ---------- FORM ---------- */
+function sendConsult(e){
+  e.preventDefault();
+  const name = document.getElementById('fName').value.trim();
+  const biz  = document.getElementById('fBiz').value.trim();
+  const auto = document.getElementById('fAuto').value.trim();
+  const subject = encodeURIComponent(`Free Consultation Request — ${name} (${biz})`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nBusiness / Industry: ${biz}\n\nWhat to automate:\n${auto}\n\n— Sent from website`
+  );
+  window.location.href = `mailto:khunmyintwin436@gmail.com?subject=${subject}&body=${body}`;
+}
+
+/* ---------- INIT ---------- */
+applyLang();
+showPanel('home');
+</script>
 </body>
 </html>
