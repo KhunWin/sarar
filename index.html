@@ -52,15 +52,18 @@ nav{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .nav-links{display:flex;gap:6px;align-items:center}
 .nav-link{
-  padding:8px 16px;border-radius:10px;font-size:.92rem;color:var(--muted);
-  cursor:pointer;transition:.25s;font-weight:500;
+  /* padding:8px 16px;border-radius:10px;font-size:.92rem;color:var(--muted);
+  cursor:pointer;transition:.25s;font-weight:500; */
+  margin-left:10px;
 }
 .nav-link:hover{color:var(--text);background:rgba(255,255,255,.05)}
 .nav-link.active{color:#0a0e1a;background:var(--grad);font-weight:700}
-.lang-switch{
-  margin-left:10px;display:flex;border:1px solid var(--border);border-radius:10px;
-  overflow:hidden;font-size:.82rem;font-weight:600;
-}
+/* .lang-switch{
+  /* margin-left:10px;display:flex;border:1px solid var(--border);border-radius:10px;
+  overflow:hidden;font-size:.82rem;font-weight:600; */
+/* } */
+.lang-switch{margin-left:0;margin-top:8px;align-self:flex-start}
+
 .lang-switch button{
   padding:7px 12px;background:transparent;border:none;color:var(--muted);
   cursor:pointer;font-family:inherit;transition:.2s;
@@ -248,6 +251,14 @@ footer{padding:28px 0;text-align:center;border-top:1px solid var(--border);color
   .projects-grid{grid-template-columns:1fr}
   .contact-wrap{grid-template-columns:1fr}
   .visual-card{padding:18px}
+  /* Language switch stays next to logo, not in dropdown */
+  nav > .lang-switch{
+    margin-left: auto;    /* pushes it to the right of the logo */
+    margin-right: 12px;   /* gap before hamburger */
+  }
+  nav > .nav-links{
+    margin-left: 0;
+  }
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -256,7 +267,7 @@ footer{padding:28px 0;text-align:center;border-top:1px solid var(--border);color
 </head>
 <body>
 
-<header>
+<!-- <header>
   <div class="container">
     <nav>
       <a class="logo" href="#" onclick="showPanel('home');return false;"><span>Khun Myint Win</span></a>
@@ -270,6 +281,31 @@ footer{padding:28px 0;text-align:center;border-top:1px solid var(--border);color
           <button id="btnMY" onclick="setLang('my')">မြန်မာ</button>
         </div>
       </div>
+      <div class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </div>
+</header> -->
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#" onclick="showPanel('home');return false;"><span>Khun Myint Win</span></a>
+
+      <!-- Language switch moved here (visible on mobile next to name) -->
+      <div class="lang-switch">
+        <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
+        <button id="btnMY" onclick="setLang('my')">မြန်မာ</button>
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link active" data-i18n="nav.home" onclick="showPanel('home')">Home</a>
+        <a class="nav-link" data-i18n="nav.services" onclick="showPanel('services')">Services</a>
+        <a class="nav-link" data-i18n="nav.projects" onclick="showPanel('projects')">Projects</a>
+        <a class="nav-link" data-i18n="nav.contact" onclick="showPanel('contact')">Contact</a>
+      </div>
+
       <div class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
         <i class="fas fa-bars"></i>
       </div>
